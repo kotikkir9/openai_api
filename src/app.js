@@ -2,12 +2,13 @@ import chalk from 'chalk';
 import { createOrAppend, createFolder } from './utility.js';
 import { prompt, openai } from './setup.js';
 
+const CHAT_DIR = './chats';
+
 // creates the 'chats' dir if it doesn't exist
-createFolder('./chats');
+createFolder(CHAT_DIR);
 
 // creates a new file for each time the app in running
-const path = './chats/' + new Date().toISOString().slice(0, 19).replace(/:/g, '-') + '.md';
-createOrAppend(path);
+const path = CHAT_DIR + '/' + new Date().toISOString().slice(0, 19).replace(/:/g, '-') + '.md';
 
 // main function
 (async () => {

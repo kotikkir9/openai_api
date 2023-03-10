@@ -7,16 +7,16 @@ export function createFolder(path) {
 }
 
 export function createOrAppend(path, message = '', opt = {}) {
+    opt?.question && (message = '## ___' + message + '___');
+    opt?.response && (message += '\n___\n<br />');
+    message += '\n\n';
+
     if (!fs.existsSync(path)) {
-        if (message.length > 0) message += '\n\n';
         fs.writeFile(path, message, function (err) {
             if (err) throw err;
         });
     } else {
-        opt?.question && (message = '## ___' + message + '___');
-        opt?.response && (message += '\n___\n<br />');
-
-        fs.appendFile(path, message + '\n\n', (err) => {
+        fs.appendFile(path, message, (err) => {
             if (err) throw err;
         });
     }
