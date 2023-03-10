@@ -8,6 +8,7 @@ export function createFolder(path) {
 
 export function createOrAppend(path, message = '', opt = {}) {
     if (!fs.existsSync(path)) {
+        if (message.length > 0) message += '\n\n';
         fs.writeFile(path, message, function (err) {
             if (err) throw err;
         });
