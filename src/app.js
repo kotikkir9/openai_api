@@ -55,6 +55,7 @@ const path = CHAT_DIR + '/' + new Date().toISOString().slice(0, 19).replace(/:/g
             const completion  = await openai.createChatCompletion({
                 model: "gpt-3.5-turbo",
                 messages,
+                // stream: true, // TODO: make the response to a stream instead?
                 // max_tokens: 7,
                 // temperature: 1,
             });
